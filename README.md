@@ -14,8 +14,8 @@ StayFinder is an online marketplace that connects people who want to rent out th
 
 ## Preview
 
-![Preview](https://github.com/Saurabh-Helwade/StayFinder/blob/eb756666030673a5a6478e821a185ffcfa048ba4/Screenshots/Screenshot%202024-07-30%20230831.png)
-![Preview](https://github.com/Saurabh-Helwade/StayFinder/blob/eb756666030673a5a6478e821a185ffcfa048ba4/Screenshots/Screenshot%202024-07-30%20230901.png)
+![Preview](https://github.com/Saurabh-Helwade/Stayfinder/blob/2910004ebadb946dcbfab83322d9ffc33cab6cda/Screenshots/Screenshot%202024-07-30%20230831.png)
+![Preview](https://github.com/Saurabh-Helwade/Stayfinder/blob/2910004ebadb946dcbfab83322d9ffc33cab6cda/Screenshots/Screenshot%202024-07-30%20230901.png)
 
 ## Installation
 
