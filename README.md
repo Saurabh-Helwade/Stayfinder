@@ -5,7 +5,7 @@ StayFinder is an online marketplace that connects people who want to rent out th
 
 ## Live Project Link
 
-To see live webpage [click here](https://stayfinder-yx11.onrender.com)
+To see live webpage [click here](https://stayfinder-yx11.onrender.com/listings)
 
 
 ## Features
