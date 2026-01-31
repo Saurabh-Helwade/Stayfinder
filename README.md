@@ -1,22 +1,75 @@
 # StayFinder
 
-StayFinder is an online marketplace that connects people who want to rent out their property with people who are looking for accommodations, typically for short stays. It offers hosts a relatively easy way to earn some income from their property, while guests often find that StayFinder rentals are cheaper and homier than hotels.
+StayFinder is a full-stack vacation rental web platform that connects property owners (hosts) with travelers (guests) looking for short-term accommodations. Hosts can list and manage their properties, while guests can discover, filter, and book stays based on their preferences—offering a flexible and homely alternative to traditional hotels.
 
+---
 
-## Live Project Link
+## 🌐 Live Project Link
 
-To see live webpage [click here](https://stayfinder-yx11.onrender.com/listings)
+👉 To view the live project, [click here](https://stayfinder-yx11.onrender.com/listings)
 
+---
 
-## Features
+## ✨ Features
 
-- **User Registration and Login:** Secure user authentication for both hosts and guests.
-- **Property Listings:** Hosts can list their properties with detailed descriptions, photos, and amenities.
-- **Search and Filter:** Guests can search for properties based on location, price, amenities, and other criteria.
-- **Booking Management:** Easy booking process with calendar integration for availability.
-- **Reviews and Ratings:** Guests can leave reviews and ratings for properties they have stayed in.
-- **Messaging System:** In-app messaging for hosts and guests to communicate.
-- **Payment Integration:** Secure payment gateway for booking transactions.
+### 🔐 Authentication & User Management
+- Secure user registration and login using **Google OAuth**
+- Role-based access for hosts and guests
+- User profile management with editable personal details
+
+### 🏠 Property Listings
+- Hosts can add, edit, and delete property listings
+- Upload property images, descriptions, pricing, and amenities
+- Manage property availability and booking status
+
+### 🔍 Search & Filters
+- Advanced search and filtering by **city, category, and amenities**
+- Responsive and user-friendly property browsing experience
+
+### 📅 Booking Management
+- Seamless property booking workflow
+- View current and past bookings
+- Availability handling to prevent double bookings
+
+### ⭐ Reviews & Ratings
+- Guests can view and submit reviews and ratings
+- Rating system improves trust and property visibility
+
+### 📊 User Dashboard
+- Personalized dashboard to:
+  - Manage bookings
+  - Edit listed properties
+  - Update profile information
+
+### ⚙️ Backend & Architecture
+- RESTful APIs built with **Node.js and Express.js**
+- **MongoDB** for scalable data storage
+- MVC architecture for clean structure and maintainability
+
+### 🎨 UI & UX
+- Responsive UI using **HTML, CSS, Bootstrap, and EJS**
+- Dark mode support for enhanced user experience
+
+---
+
+## 🛠 Tech Stack
+
+- **Frontend:** HTML, CSS, JavaScript, Bootstrap, EJS  
+- **Backend:** Node.js, Express.js  
+- **Database:** MongoDB  
+- **Authentication:** Google OAuth  
+- **Architecture:** MVC Pattern  
+
+---
+
+## 🚀 Future Enhancements
+- Online payment gateway integration
+- Wishlist / favorite properties feature
+- Admin panel for moderation and analytics
+- Map-based property search
+
+---
+
 
 ## Preview
 
