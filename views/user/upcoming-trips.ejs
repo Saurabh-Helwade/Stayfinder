@@ -1,0 +1,211 @@
+<% layout("/layouts/boilerplate") %>
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-12">
+            <div class="card bookings-card">
+                <div class="card-header">
+                    <h3 class="mb-0">Upcoming Trips</h3>
+                </div>
+                <div class="card-body">
+                    <ul class="nav nav-tabs mb-4">
+                        <li class="nav-item">
+                            <a class="nav-link" href="/bookings">All Bookings</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link active" href="/bookings/upcoming">Upcoming</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/bookings/past">Past</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/bookings/cancelled">Cancelled</a>
+                        </li>
+                    </ul>
+                    
+                    <% if (typeof bookings !== 'undefined' && bookings.length > 0) { %>
+                        <div class="row">
+                            <% bookings.forEach(booking => { %>
+                                <div class="col-md-6 col-lg-4 mb-4">
+                                    <div class="booking-card">
+                                        <div class="booking-header">
+                                            <% if (booking.listing) { %>
+                                                <h5><%= booking.listing.title %></h5>
+                                                <p class="text-muted"><span class="custom-house-icon"></span> <%= booking.listing.location %>, <%= booking.listing.country %></p>
+                                            <% } else { %>
+                                                <h5>Listing Unavailable</h5>
+                                                <p class="text-muted">This listing has been removed</p>
+                                            <% } %>
+                                        </div>
+                                        <div class="booking-details">
+                                            <div class="booking-info">
+                                                <p><strong>Booking ID:</strong> <%= booking._id %></p>
+                                                <p><strong>Dates:</strong> <%= new Date(booking.startDate).toLocaleDateString() %> to <%= new Date(booking.endDate).toLocaleDateString() %></p>
+                                                <p><strong>Guests:</strong> <%= booking.guests %> guests</p>
+                                                <p><strong>Total:</strong> $<%= booking.totalPrice %></p>
+                                                <p><strong>Status:</strong> 
+                                                    <% if (booking.status === 'confirmed') { %>
+                                                        <span class="badge bg-success">Confirmed</span>
+                                                    <% } else if (booking.status === 'pending') { %>
+                                                        <span class="badge bg-warning">Pending</span>
+                                                    <% } else { %>
+                                                        <span class="badge bg-info"><%= booking.status %></span>
+                                                    <% } %>
+                                                </p>
+                                            </div>
+                                        </div>
+                                        <div class="card-footer bg-white">
+                                            <div class="d-grid gap-2">
+                                                <a href="/invoices" class="btn btn-sm btn-outline-primary mb-2">
+                                                    <i class="fa-regular fa-file-lines me-1"></i> View Invoice
+                                                </a>
+                                                <% if (booking.listing) { %>
+                                                    <form method="POST" action="/bookings/<%= booking._id %>/cancel" class="d-inline">
+                                                        <button type="submit" class="btn btn-sm btn-outline-danger" onclick="return confirm('Are you sure you want to cancel this booking?')">
+                                                            <i class="fa-solid fa-ban me-1"></i> Cancel Booking
+                                                        </button>
+                                                    </form>
+                                                <% } %>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            <% }); %>
+                        </div>
+                    <% } else { %>
+                        <div class="no-bookings text-center py-5">
+                            <i class="fa-solid fa-calendar-days fa-3x mb-3 text-muted"></i>
+                            <h4>No upcoming trips</h4>
+                            <p class="text-muted">Your future bookings will appear here.</p>
+                            <a href="/listings" class="btn btn-primary">Explore Listings</a>
+                        </div>
+                    <% } %>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+.bookings-card {
+    border: none;
+    border-radius: var(--border-radius-medium);
+    box-shadow: var(--shadow-medium);
+    overflow: hidden;
+}
+
+.bookings-card .card-header {
+    background: linear-gradient(135deg, var(--primary-color), #ff7a84);
+    color: white;
+    border: none;
+    padding: 1.5rem;
+}
+
+.nav-tabs .nav-link {
+    color: var(--accent-color);
+    border: none;
+    font-weight: 500;
+}
+
+.nav-tabs .nav-link.active {
+    color: var(--primary-color);
+    border-bottom: 3px solid var(--primary-color);
+    background: transparent;
+}
+
+.nav-tabs .nav-link:hover {
+    border-color: transparent;
+    background-color: rgba(254, 66, 77, 0.1);
+}
+
+.booking-card {
+    border: 1px solid #e0e0e0;
+    border-radius: var(--border-radius-small);
+    overflow: hidden;
+    transition: all 0.3s ease;
+    height: 100%;
+}
+
+.booking-card:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-large);
+}
+
+.booking-header {
+    padding: 1rem;
+    background: linear-gradient(135deg, #f8f9fa, #e9ecef);
+    border-bottom: 1px solid #e0e0e0;
+}
+
+.booking-header h5 {
+    font-weight: 700;
+    color: var(--secondary-color);
+    margin: 0;
+}
+
+.booking-details {
+    padding: 1rem;
+}
+
+.booking-info p {
+    margin: 0.5rem 0;
+    font-size: 0.9rem;
+}
+
+.card-footer {
+    border-top: 1px solid #e0e0e0;
+    padding: 1rem;
+}
+
+.no-bookings {
+    color: var(--accent-color);
+}
+
+.no-bookings h4 {
+    color: var(--secondary-color);
+    font-weight: 600;
+}
+
+.btn-primary {
+    background: linear-gradient(135deg, var(--primary-color), #ff7a84);
+    border: none;
+    padding: 0.75rem 1.5rem;
+    border-radius: var(--border-radius-small);
+    font-weight: 600;
+}
+
+.btn-primary:hover {
+    background: linear-gradient(135deg, #e53943, #ff4d4d);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(254, 66, 77, 0.3);
+}
+
+.btn-outline-primary {
+    color: var(--primary-color);
+    border-color: var(--primary-color);
+    padding: 0.5rem 1rem;
+    border-radius: var(--border-radius-small);
+    font-weight: 600;
+    font-size: 0.85rem;
+}
+
+.btn-outline-primary:hover {
+    background: linear-gradient(135deg, var(--primary-color), #ff7a84);
+    border-color: var(--primary-color);
+    color: white;
+}
+
+.btn-outline-danger {
+    color: #dc3545;
+    border-color: #dc3545;
+    padding: 0.5rem 1rem;
+    border-radius: var(--border-radius-small);
+    font-weight: 600;
+    font-size: 0.85rem;
+}
+
+.btn-outline-danger:hover {
+    background: #dc3545;
+    border-color: #dc3545;
+    color: white;
+}
+</style>

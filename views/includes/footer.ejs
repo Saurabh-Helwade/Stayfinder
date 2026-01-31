@@ -1,14 +1,232 @@
-<footer>
-    <div class="f-info">
-        <div class="f-info-socials">
-            <i class="fa-brands fa-square-facebook"></i>
-            <i class="fa-brands fa-square-instagram"></i>
-            <i class="fa-brands fa-linkedin"></i>
-        </div>
-        <div class="f-info-brand"> &copy; StayFinder Private Limited</div>
-        <div class="f-info-links">
-            <a href="/privacy">Privacy</a>
-            <a href="/terms">Terms</a>
-        </div>
+<footer class="f-container">
+  <div class="f-content">
+
+    <!-- Support -->
+    <div class="f-column">
+      <h3>Support</h3>
+      <ul>
+        <li><a href="/support">Help Center</a></li>
+        <li><a href="#">StayFinder.org</a></li>
+        <li><a href="#">Safety Information</a></li>
+        <li><a href="#">Supporting People with Disabilities</a></li>
+        <li><a href="#">Cancellation Options</a></li>
+        <li><a href="#">Our COVID-19 Response</a></li>
+        <li><a href="#">Report a Neighborhood Concern</a></li>
+      </ul>
     </div>
+
+    <!-- Community -->
+    <div class="f-column">
+      <h3>Community</h3>
+      <ul>
+        <li><a href="#">StayFinder Magazine</a></li>
+        <li><a href="#">StayFinder Associates</a></li>
+        <li><a href="#">Careers</a></li>
+        <li><a href="#">Investors</a></li>
+        <li><a href="#">Gift Cards</a></li>
+        <li><a href="#">StayFinder.org Emergency Stays</a></li>
+      </ul>
+    </div>
+
+    <!-- Hosting -->
+    <div class="f-column">
+      <h3>Hosting</h3>
+      <ul>
+        <li><a href="/listings/new">Try Hosting</a></li>
+        <li><a href="#">StayFinder Cover</a></li>
+        <li><a href="#">Explore Hosting Resources</a></li>
+        <li><a href="#">Visit Our Community Forum</a></li>
+        <li><a href="#">How to Host Responsibly</a></li>
+      </ul>
+    </div>
+
+  </div>
+
+  <!-- Bottom Section -->
+  <div class="f-bottom">
+
+    <!-- Social Icons -->
+    <div class="f-socials">
+      <i class="fa-brands fa-square-facebook"></i>
+      <i class="fa-brands fa-square-instagram"></i>
+      <i class="fa-brands fa-linkedin"></i>
+      <i class="fa-brands fa-twitter"></i>
+      <i class="fa-brands fa-youtube"></i>
+    </div>
+
+    <!-- Copyright -->
+    <div class="f-copyright">
+      &copy; <%= new Date().getFullYear() %> StayFinder Private Limited. All rights reserved.
+    </div>
+
+    <!-- Footer Links -->
+    <div class="f-tools">
+      <a href="/privacy">Privacy</a>
+      <a href="/terms">Terms</a>
+      <a href="/sitemap">Sitemap</a>
+    </div>
+
+  </div>
 </footer>
+
+<style>
+/* ================= FOOTER (LIGHT MODE – EXISTING) ================= */
+
+.f-container {
+  background-color: #f7f7f7;
+  border-top: 1px solid #ddd;
+  padding: 40px 80px 20px;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.f-content {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 40px;
+  margin-bottom: 30px;
+}
+
+.f-column h3 {
+  font-size: 16px;
+  font-weight: 600;
+  margin-bottom: 15px;
+  color: #222;
+}
+
+.f-column ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.f-column ul li {
+  margin-bottom: 10px;
+}
+
+.f-column ul li a {
+  text-decoration: none;
+  color: #555;
+  font-size: 14px;
+  transition: color 0.2s ease;
+}
+
+.f-column ul li a:hover {
+  color: #000;
+  text-decoration: underline;
+}
+
+.f-bottom {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 15px;
+  padding-top: 20px;
+  border-top: 1px solid #ddd;
+}
+
+.f-socials {
+  display: flex;
+  gap: 15px;
+}
+
+.f-socials i {
+  font-size: 20px;
+  color: #555;
+  cursor: pointer;
+  transition: color 0.2s ease, transform 0.2s ease;
+}
+
+.f-socials i:hover {
+  color: #000;
+  transform: scale(1.1);
+}
+
+.f-copyright {
+  font-size: 14px;
+  color: #555;
+  text-align: center;
+}
+
+.f-tools {
+  display: flex;
+  gap: 15px;
+}
+
+.f-tools a {
+  text-decoration: none;
+  color: #555;
+  font-size: 14px;
+}
+
+.f-tools a:hover {
+  text-decoration: underline;
+  color: #000;
+}
+
+/* ================= DARK MODE OVERRIDES ================= */
+
+.night-mode .f-container {
+  background-color: #020617;
+  border-top: 1px solid #1e293b;
+}
+
+.night-mode .f-column h3 {
+  color: #f9fafb;
+}
+
+.night-mode .f-column ul li a {
+  color: #cbd5e1;
+}
+
+.night-mode .f-column ul li a:hover {
+  color: #ffffff;
+}
+
+.night-mode .f-bottom {
+  border-top: 1px solid #1e293b;
+}
+
+.night-mode .f-socials i {
+  color: #cbd5e1;
+}
+
+.night-mode .f-socials i:hover {
+  color: #ffffff;
+}
+
+.night-mode .f-copyright {
+  color: #94a3b8;
+}
+
+.night-mode .f-tools a {
+  color: #cbd5e1;
+}
+
+.night-mode .f-tools a:hover {
+  color: #ffffff;
+}
+
+/* ================= RESPONSIVE ================= */
+
+@media (max-width: 900px) {
+  .f-container {
+    padding: 40px 30px 20px;
+  }
+
+  .f-content {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (max-width: 600px) {
+  .f-content {
+    grid-template-columns: 1fr;
+  }
+
+  .f-bottom {
+    flex-direction: column;
+    text-align: center;
+  }
+}
+</style>

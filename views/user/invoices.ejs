@@ -1,0 +1,111 @@
+<% layout("/layouts/boilerplate") %>
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-12">
+            <div class="card profile-card">
+                <div class="card-header">
+                    <h3 class="mb-0">Invoices & Receipts</h3>
+                </div>
+                <div class="card-body">
+                    <% if (typeof invoices !== 'undefined' && invoices.length > 0) { %>
+                        <div class="table-responsive">
+                            <table class="table table-hover">
+                                <thead>
+                                    <tr>
+                                        <th>Invoice ID</th>
+                                        <th>Date</th>
+                                        <th>Booking</th>
+                                        <th>Amount</th>
+                                        <th>Status</th>
+                                        <th>Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <% invoices.forEach(invoice => { %>
+                                        <tr>
+                                            <td><%= invoice.invoiceNumber %></td>
+                                            <td><%= new Date(invoice.date).toLocaleDateString() %></td>
+                                            <td><%= invoice.booking ? invoice.booking.listing.title : 'N/A' %></td>
+                                            <td>$<%= invoice.amount %></td>
+                                            <td>
+                                                <% if (invoice.status === 'paid') { %>
+                                                    <span class="badge bg-success">Paid</span>
+                                                <% } else if (invoice.status === 'pending') { %>
+                                                    <span class="badge bg-warning">Pending</span>
+                                                <% } else { %>
+                                                    <span class="badge bg-secondary">Refunded</span>
+                                                <% } %>
+                                            </td>
+                                            <td>
+                                                <a href="#" class="btn btn-sm btn-outline-primary">
+                                                    <i class="fa-regular fa-file-pdf me-1"></i> Download
+                                                </a>
+                                            </td>
+                                        </tr>
+                                    <% }); %>
+                                </tbody>
+                            </table>
+                        </div>
+                    <% } else { %>
+                        <div class="text-center py-5">
+                            <i class="fa-regular fa-file-lines fa-3x mb-3 text-muted"></i>
+                            <h4>No invoices available</h4>
+                            <p class="text-muted">Your booking invoices will appear here after payment.</p>
+                            <a href="/listings" class="btn btn-primary">Explore Listings</a>
+                        </div>
+                    <% } %>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+.profile-card {
+    border: none;
+    border-radius: var(--border-radius-medium);
+    box-shadow: var(--shadow-medium);
+    overflow: hidden;
+}
+
+.profile-card .card-header {
+    background: linear-gradient(135deg, var(--primary-color), #ff7a84);
+    color: white;
+    border: none;
+    padding: 1.5rem;
+}
+
+.table th {
+    font-weight: 600;
+    color: var(--secondary-color);
+}
+
+.btn-primary {
+    background: linear-gradient(135deg, var(--primary-color), #ff7a84);
+    border: none;
+    padding: 0.75rem 1.5rem;
+    border-radius: var(--border-radius-small);
+    font-weight: 600;
+}
+
+.btn-primary:hover {
+    background: linear-gradient(135deg, #e53943, #ff4d4d);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(254, 66, 77, 0.3);
+}
+
+.btn-outline-primary {
+    color: var(--primary-color);
+    border-color: var(--primary-color);
+    padding: 0.5rem 1rem;
+    border-radius: var(--border-radius-small);
+    font-weight: 600;
+    font-size: 0.85rem;
+}
+
+.btn-outline-primary:hover {
+    background: linear-gradient(135deg, var(--primary-color), #ff7a84);
+    border-color: var(--primary-color);
+    color: white;
+}
+</style>

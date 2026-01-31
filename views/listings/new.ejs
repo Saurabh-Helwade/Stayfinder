@@ -1,88 +1,189 @@
 <% layout("/layouts/boilerplate") %>
-<br>
-    <div class="row">
-        <div class="col-8 offset-2">
-    <h3>Create a New Listing</h3>
-    <br><br>
-    <form method="POST" 
-    action="/listings" 
-    novalidate class="needs-validation" 
-    enctype="multipart/form-data" >
-        <div class="mb-3">
-            <label for="title" class="form-label" > Title </label>
-        <input 
-        type="text" 
-        name="listing[title]" 
-        placeholder="Add a catchy title "
-        class="form-control"
-        required
+
+<div class="container mt-4 mb-5">
+  <div class="row justify-content-center">
+    <div class="col-md-8 col-lg-6">
+      <div class="form-container p-4 shadow-sm rounded bg-white">
+        <h3 class="text-center mb-4">Create New Listing</h3>
+
+        <form
+          method="POST"
+          action="/listings"
+          enctype="multipart/form-data"
+          class="needs-validation"
+          novalidate
         >
-        <div class="valid-feedback">Title Looks Good !</div>
-        </div>
-        <div class="mb-3">
-            <lable for="description" class="form-label" > Decription </lable>
-            <textarea  
-            name="listing[description]"  
-            class="form-control" 
-            required></textarea>
-            <div class="invalid-feedback">Please enter a short description</div>
-        </div>
-       
-        <!-- <div class="mb-3">
-            <lable for="image" class="form-label" > Image Link </lable>
-            <input 
-            name="listing[image]" 
-            placeholder="Enter image URL/link"  
-            class="form-control">
-        </div> -->
+          <!-- TITLE -->
+          <div class="mb-3">
+            <label class="form-label" for="title">Title</label>
+            <input
+              type="text"
+              class="form-control"
+              id="title"
+              name="listing[title]"
+              placeholder="Add a catchy title"
+              required
+            >
+            <div class="invalid-feedback">Please provide a title.</div>
+          </div>
 
-        <div class="mb-3">
-            <lable for="image" class="form-label" > Upload Listing Image </lable>
-            <input 
-            name="listing[image]" 
-            type="file"
-            required
-            placeholder="Enter image URL/link"  
-            class="form-control">
-        </div>
+          <!-- DESCRIPTION -->
+          <div class="mb-3">
+            <label class="form-label" for="description">Description</label>
+            <textarea
+              class="form-control"
+              id="description"
+              name="listing[description]"
+              rows="3"
+              placeholder="Write a short description"
+              required
+            ></textarea>
+            <div class="invalid-feedback">Please provide a description.</div>
+          </div>
 
+          <!-- IMAGE -->
+          <div class="mb-3">
+            <label class="form-label" for="image">Upload Listing Image</label>
+            <input
+              type="file"
+              class="form-control"
+              id="image"
+              name="listing[image]"
+              required
+            >
+            <div class="invalid-feedback">Please upload an image.</div>
+          </div>
 
-       <div class="row">
-       <div class="mb-3 col-md-4">
-            <lable for="price" class="form-label" > Price </lable>
-            <input type="number" 
-            name="listing[price]" 
-            placeholder="1200"  
-            class="form-control" 
-            required>
-            <div class="invalid-feedback">Price should be valid</div>
-       </div>
+          <!-- PRICE + CATEGORY -->
+          <div class="row">
+            <div class="col-md-6 mb-3">
+              <label class="form-label" for="price">Price (per night)</label>
+              <input
+                type="number"
+                class="form-control"
+                id="price"
+                name="listing[price]"
+                placeholder="1200"
+                required
+              >
+              <div class="invalid-feedback">Please provide a valid price.</div>
+            </div>
 
-       <div class="mb-3 col-md-8">
-        <lable for="country" class="form-label" > Country </lable>
-        <input 
-        type="text" 
-        name="listing[country]" 
-        placeholder="India" 
-        class="form-control" 
-        required>
-        <div class="invalid-feedback">Country name should be valid</div>
+            <div class="col-md-6 mb-3">
+              <label class="form-label" for="category">Category</label>
+              <select
+                class="form-select"
+                id="category"
+                name="listing[category]"
+                required
+              >
+                <option value="">Select a category</option>
+                <option>Trending</option>
+                <option>Rooms</option>
+                <option>Iconic Cities</option>
+                <option>Mountains</option>
+                <option>Farms</option>
+                <option>Arctic</option>
+                <option>Domes</option>
+                <option>Boats</option>
+                <option>Beach</option>
+                <option>Luxury</option>
+                <option>Camping</option>
+                <option>Castles</option>
+              </select>
+              <div class="invalid-feedback">Please select a category.</div>
+            </div>
+          </div>
+
+          <!-- COUNTRY + LOCATION -->
+          <div class="row">
+            <div class="col-md-6 mb-3">
+              <label class="form-label" for="country">Country</label>
+              <input
+                type="text"
+                class="form-control"
+                id="country"
+                name="listing[country]"
+                placeholder="India"
+                required
+              >
+              <div class="invalid-feedback">Please provide a country.</div>
+            </div>
+
+            <div class="col-md-6 mb-3">
+              <label class="form-label" for="location">Location</label>
+              <input
+                type="text"
+                class="form-control"
+                id="location"
+                name="listing[location]"
+                placeholder="Jaipur, Rajasthan"
+                required
+              >
+              <div class="invalid-feedback">Please provide a location.</div>
+            </div>
+          </div>
+
+          <!-- SUBMIT -->
+          <button class="btn btn-primary w-100 mt-3">
+            Create Listing
+          </button>
+        </form>
+      </div>
     </div>
-    </div>
-       <div class="mb-3">
-            <lable for="location" class="form-label" > Location </lable>
-            <input 
-            type="text" 
-            name="listing[location]" 
-            placeholder="Jaipur , Rajasthan"  
-            class="form-control" 
-            required>
-            <div class="invalid-feedback">Location should be valid</div>
-       </div>
-
-
-       <br>
-        <button class="btn btn-dark add-btn">Add</button>
-    </form>
+  </div>
 </div>
-</div>
+
+<style>
+/* ================= LIGHT MODE (DEFAULT) ================= */
+/* no changes needed */
+
+/* ================= DARK MODE ================= */
+
+.night-mode .form-container {
+  background-color: #020617 !important;
+  border: 1px solid #1e293b;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.6);
+}
+
+.night-mode h3 {
+  color: #f9fafb;
+}
+
+.night-mode .form-label {
+  color: #e5e7eb;
+}
+
+.night-mode .form-control,
+.night-mode .form-select {
+  background-color: #020617;
+  color: #f9fafb;
+  border: 1px solid #1e293b;
+}
+
+.night-mode .form-control::placeholder {
+  color: #94a3b8;
+}
+
+.night-mode .form-control:focus,
+.night-mode .form-select:focus {
+  background-color: #020617;
+  color: #ffffff;
+  border-color: var(--primary-color, #fe424d);
+  box-shadow: 0 0 0 0.2rem rgba(254, 66, 77, 0.25);
+}
+
+.night-mode .invalid-feedback {
+  color: #fca5a5;
+}
+
+.night-mode .btn-primary {
+  background: linear-gradient(135deg, var(--primary-color, #fe424d), #ff7a84);
+  border: none;
+}
+
+.night-mode .btn-primary:hover {
+  background: linear-gradient(135deg, #e53943, #ff4d4d);
+  box-shadow: 0 6px 20px rgba(254, 66, 77, 0.35);
+}
+</style>

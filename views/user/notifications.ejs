@@ -1,0 +1,85 @@
+<% layout("/layouts/boilerplate") %>
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-10">
+            <div class="card profile-card">
+                <div class="card-header">
+                    <h3 class="mb-0">Notifications</h3>
+                </div>
+                <div class="card-body">
+                    <% if (notifications && notifications.length > 0) { %>
+                        <div class="list-group">
+                            <% notifications.forEach(notification => { %>
+                                <div class="list-group-item <%= notification.read ? '' : 'bg-light' %>">
+                                    <div class="d-flex">
+                                        <div class="me-3">
+                                            <i class="fa-regular fa-bell fa-2x text-primary"></i>
+                                        </div>
+                                        <div class="flex-grow-1">
+                                            <div class="d-flex justify-content-between">
+                                                <h5 class="mb-1"><%= notification.title %></h5>
+                                                <small class="text-muted"><%= new Date(notification.time).toLocaleDateString() %></small>
+                                            </div>
+                                            <p class="mb-1"><%= notification.message %></p>
+                                            <small class="text-muted"><%= notification.category %></small>
+                                        </div>
+                                        <% if (!notification.read) { %>
+                                            <div class="ms-2">
+                                                <form method="POST" action="/user/notifications/<%= notification._id %>/read">
+                                                    <button type="submit" class="btn btn-sm btn-outline-primary">Mark as Read</button>
+                                                </form>
+                                            </div>
+                                        <% } %>
+                                    </div>
+                                </div>
+                            <% }); %>
+                        </div>
+                    <% } else { %>
+                        <div class="text-center py-5">
+                            <i class="fa-regular fa-bell fa-3x mb-3 text-muted"></i>
+                            <h4>No notifications yet</h4>
+                            <p class="text-muted">When you have updates, they'll appear here.</p>
+                        </div>
+                    <% } %>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+.profile-card {
+    border: none;
+    border-radius: var(--border-radius-medium);
+    box-shadow: var(--shadow-medium);
+    overflow: hidden;
+}
+
+.profile-card .card-header {
+    background: linear-gradient(135deg, var(--primary-color), #ff7a84);
+    color: white;
+    border: none;
+    padding: 1.5rem;
+}
+
+.list-group-item {
+    border: 1px solid rgba(0, 0, 0, 0.125);
+    border-left: none;
+    border-right: none;
+    border-radius: 0;
+    padding: 1.5rem 0;
+}
+
+.list-group-item:first-child {
+    border-top: none;
+}
+
+.list-group-item:last-child {
+    border-bottom: none;
+}
+
+.btn-outline-primary {
+    padding: 0.25rem 0.5rem;
+    font-size: 0.8rem;
+}
+</style>

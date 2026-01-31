@@ -1,0 +1,188 @@
+<% layout("/layouts/boilerplate") %>
+
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card profile-card">
+                <div class="card-header">
+                    <h3 class="mb-0">Settings</h3>
+                </div>
+
+                <div class="card-body">
+                    <form method="POST" action="/settings">
+
+                        <!-- ================= CHANGE PASSWORD ================= -->
+                        <div class="mb-4">
+                            <h5>Change Password</h5>
+
+                            <div class="mb-3">
+                                <label for="currentPassword" class="form-label">Current Password</label>
+                                <input type="password" class="form-control" id="currentPassword" name="currentPassword">
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="newPassword" class="form-label">New Password</label>
+                                <input type="password" class="form-control" id="newPassword" name="newPassword">
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="confirmPassword" class="form-label">Confirm New Password</label>
+                                <input type="password" class="form-control" id="confirmPassword" name="confirmPassword">
+                            </div>
+                        </div>
+
+                        <!-- ================= PREFERENCES ================= -->
+                        <div class="mb-4">
+                            <h5>Preferences</h5>
+
+                            <div class="mb-3">
+                                <label for="language" class="form-label">Language</label>
+                                <select class="form-select" id="language" name="language">
+                                    <option value="English" <%= user.language === 'English' ? 'selected' : '' %>>English</option>
+                                    <option value="Spanish" <%= user.language === 'Spanish' ? 'selected' : '' %>>Spanish</option>
+                                    <option value="French" <%= user.language === 'French' ? 'selected' : '' %>>French</option>
+                                    <option value="German" <%= user.language === 'German' ? 'selected' : '' %>>German</option>
+                                </select>
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="currency" class="form-label">Currency</label>
+                                <select class="form-select" id="currency" name="currency">
+                                    <option value="USD" <%= user.currency === 'USD' ? 'selected' : '' %>>USD - US Dollar</option>
+                                    <option value="EUR" <%= user.currency === 'EUR' ? 'selected' : '' %>>EUR - Euro</option>
+                                    <option value="GBP" <%= user.currency === 'GBP' ? 'selected' : '' %>>GBP - British Pound</option>
+                                    <option value="INR" <%= user.currency === 'INR' ? 'selected' : '' %>>INR - Indian Rupee</option>
+                                </select>
+                            </div>
+
+                            <div class="mb-3">
+                                <label class="form-label">Theme</label>
+                                <div>
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input" type="radio" name="theme" id="lightTheme" value="light"
+                                            <%= user.theme === 'light' ? 'checked' : '' %>>
+                                        <label class="form-check-label" for="lightTheme">
+                                            <i class="fa-regular fa-sun me-1"></i> Light
+                                        </label>
+                                    </div>
+
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input" type="radio" name="theme" id="darkTheme" value="dark"
+                                            <%= user.theme === 'dark' ? 'checked' : '' %>>
+                                        <label class="form-check-label" for="darkTheme">
+                                            <i class="fa-regular fa-moon me-1"></i> Dark
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- ================= ACTIONS ================= -->
+                        <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                            <a href="/profile" class="btn btn-outline-secondary">Cancel</a>
+                            <button type="submit" class="btn btn-primary">Save Changes</button>
+                        </div>
+
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+/* ================= LIGHT MODE (EXISTING) ================= */
+
+.profile-card {
+    border: none;
+    border-radius: var(--border-radius-medium);
+    box-shadow: var(--shadow-medium);
+    overflow: hidden;
+}
+
+.profile-card .card-header {
+    background: linear-gradient(135deg, var(--primary-color), #ff7a84);
+    color: white;
+    border: none;
+    padding: 1.5rem;
+}
+
+.form-label {
+    font-weight: 600;
+    color: var(--secondary-color);
+}
+
+.btn-primary {
+    background: linear-gradient(135deg, var(--primary-color), #ff7a84);
+    border: 0.8px solid rgb(108, 117, 125);
+    padding: 0.75rem 1.5rem;
+    color: rgb(108, 117, 125);
+    border-radius: var(--border-radius-small);
+    font-weight: 600;
+}
+
+.btn-primary:hover {
+    background: linear-gradient(135deg, #e53943, #ff4d4d);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(254, 66, 77, 0.3);
+}
+
+.btn-outline-secondary {
+    padding: 0.75rem 1.5rem;
+    border-radius: var(--border-radius-small);
+    font-weight: 600;
+}
+
+/* ================= DARK MODE (NEW) ================= */
+
+.night-mode .profile-card {
+    background-color: #020617;
+    border: 1px solid #1e293b;
+    box-shadow: 0 14px 45px rgba(0, 0, 0, 0.7);
+}
+
+.night-mode .card-body {
+    color: #e5e7eb;
+}
+
+.night-mode h5 {
+    color: #f9fafb;
+}
+
+.night-mode .form-label {
+    color: #f9fafb;
+}
+
+.night-mode .form-control,
+.night-mode .form-select {
+    background-color: #020617;
+    color: #f9fafb;
+    border-color: #1e293b;
+}
+
+.night-mode .form-control::placeholder {
+    color: #94a3b8;
+}
+
+.night-mode .form-control:focus,
+.night-mode .form-select:focus {
+    background-color: #020617;
+    color: #ffffff;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 3px rgba(254, 66, 77, 0.25);
+}
+
+.night-mode .form-check-label {
+    color: #e5e7eb;
+}
+
+.night-mode .btn-outline-secondary {
+    color: #e5e7eb;
+    border-color: #334155;
+}
+
+.night-mode .btn-outline-secondary:hover {
+    background-color: rgba(254, 66, 77, 0.15);
+    color: #ffffff;
+}
+</style>

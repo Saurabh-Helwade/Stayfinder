@@ -1,72 +1,346 @@
 <style>
-  .search-btn {
-    background-color: #fe424d;
-    color: #fff;
-    width: 10rem;
-    border-radius: 25px;
-    padding: 0 1rem 0 1rem;
-  }
-  .search-btn:hover {
-    background-color: #fe424d;
-    color: #fff;
-  }
-  .search-btn i {
-    display: inline-block;
-    margin-right: 0.1rem;
+  /* ================= LIGHT MODE ================= */
+
+  .navbar {
+    background: rgba(255, 255, 255, 0.95) !important;
+    backdrop-filter: blur(10px);
+    border: none !important;
+    box-shadow: 0 2px 20px rgba(0, 0, 0, 0.05);
+    padding: 0.75rem 1rem;
   }
 
-  .search-input {
-    border-radius: 25px;
-    padding: 0.5rem 2rem 0.5rem 1rem;
-    font-size: 1rem;
+  .navbar-brand {
+    display: flex;
+    align-items: center;
+    font-weight: 700;
+    font-size: 1.5rem;
+    color: var(--primary-color, #fe424d) !important;
+    text-decoration: none;
   }
-</style> 
 
-<nav class="navbar navbar-expand-md bg-body-light border-bottom sticky-top">
-    <div class="container-fluid">
-      <a class="navbar-brand" href="/listings"><i class="fa-regular fa-compass"></i></a>
-      <button class="navbar-toggler" 
-      type="button" 
-      data-bs-toggle="collapse" 
-      data-bs-target="#navbarNavAltMarkup" >
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-        <a class="nav-link active"
-         aria-current="page" 
-         href="/listings" 
-         style="font-size: 1.5rem; font-weight: 500; color:black; padding-right: 2rem;">StayFinder</a>
-        <div class="navbar-nav" >
-          <a class="nav-link" href="/listings">Explore</a>
-        </div>
+  .brand-text {
+    margin-left: 0.5rem;
+    font-size: xx-large;
+  }
 
-        <div class="navbar-nav ms-auto"> 
-          <form class="d-flex" role="search">
-            <input class="form-control me-2 search-input" 
-            type="search" 
-            placeholder="Search Destinations" 
+  .nav-link {
+    font-size: 0.95rem !important;
+    color: var(--accent-color, #333) !important;
+    font-weight: 500;
+    padding: 0.5rem 1rem !important;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+    position: relative;
+  }
 
-            >
-            <button class="btn search-btn " 
-            type="submit">
-              <i class="fa-solid fa-magnifying-glass"></i>
-              Search
-            </button>
+  .nav-link:hover {
+    color: var(--primary-color, #fe424d) !important;
+    background-color: rgba(254, 66, 77, 0.1);
+  }
+
+  .nav-link::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 0;
+    height: 2px;
+    background-color: var(--primary-color, #fe424d);
+    transition: width 0.3s ease;
+  }
+
+  .nav-link:hover::after {
+    width: 70%;
+  }
+
+  /* Dark mode toggle */
+  #theme-toggle {
+    background: transparent;
+    border: none;
+    color: var(--accent-color, #333);
+  }
+
+  #theme-toggle:hover {
+    color: var(--primary-color, #fe424d);
+    background-color: rgba(254, 66, 77, 0.1);
+  }
+
+  /* Search */
+  .search-container-wrapper {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 50%;
+    display: flex;
+    justify-content: center;
+  }
+
+  .search-container {
+    background-color: white;
+    border-radius: 50px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    padding: 0.5rem 1rem;
+    max-width: 500px;
+    width: 100%;
+    position: relative;
+    transition: all 0.3s ease;
+  }
+
+  .search-container:hover {
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.12);
+  }
+
+  .form-control.search-input {
+    border: none;
+    background: transparent;
+    padding-left: 2rem;
+    font-size: 0.95rem;
+    height: 40px;
+  }
+
+  .form-control.search-input:focus {
+    outline: none;
+    box-shadow: none;
+  }
+
+  .search-icon {
+    position: absolute;
+    left: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--accent-color, #666);
+  }
+
+  .btn-search {
+    background: linear-gradient(135deg, var(--primary-color, #fe424d), #ff7a84);
+    color: white;
+    border-radius: 50px;
+    padding: 0.4rem 1.2rem;
+    border: none;
+    font-weight: 600;
+    font-size: 0.9rem;
+  }
+
+  .btn-search:hover {
+    background: linear-gradient(135deg, #e53943, #ff4d4d);
+  }
+
+  .dropdown-toggle::after {
+    display: none;
+  }
+
+  .dropdown-item {
+    display: flex;
+    align-items: center;
+    padding: 0.5rem 1rem;
+  }
+
+  .dropdown-item:hover {
+    background-color: rgba(254, 66, 77, 0.1);
+  }
+
+  /* ================= DARK MODE ================= */
+
+  .night-mode .navbar {
+    background: rgba(2, 6, 23, 0.95) !important;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.7);
+  }
+
+  .night-mode .nav-link {
+    color: #e5e7eb !important;
+  }
+
+  .night-mode .nav-link:hover {
+    background-color: rgba(254, 66, 77, 0.15);
+    color: #ffffff !important;
+  }
+
+  .night-mode #theme-toggle {
+    color: #e5e7eb;
+  }
+
+  .night-mode #theme-toggle:hover {
+    background-color: rgba(254, 66, 77, 0.15);
+    color: #ffffff;
+  }
+
+  .night-mode .search-container {
+    background-color: #020617;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.6);
+  }
+
+  .night-mode .search-icon {
+    color: #94a3b8;
+  }
+
+  .night-mode .form-control.search-input {
+    color: #f9fafb;
+  }
+
+  .night-mode .form-control.search-input::placeholder {
+    color: #94a3b8;
+  }
+
+  .night-mode .dropdown-menu {
+    background-color: #020617;
+    border: 1px solid #1e293b;
+  }
+
+  .night-mode .dropdown-item {
+    color: #e5e7eb;
+  }
+
+  .night-mode .dropdown-item:hover {
+    background-color: rgba(254, 66, 77, 0.15);
+    color: #ffffff;
+  }
+
+  .night-mode .dropdown-header {
+    color: #f9fafb;
+  }
+
+  .night-mode .dropdown-divider {
+    border-color: #1e293b;
+  }
+
+  /* ================= MOBILE ================= */
+
+  @media (max-width: 991px) {
+    .search-container-wrapper {
+      position: static;
+      transform: none;
+      width: 100%;
+      margin: 1rem 0;
+      order: 3;
+    }
+
+    .navbar-collapse {
+      margin-top: 1rem;
+    }
+
+    .nav-link {
+      display: block;
+      margin: 0.25rem 0;
+      font-size: 1rem !important;
+    }
+  }
+</style>
+
+<nav class="navbar navbar-expand-lg sticky-top">
+  <div class="container-fluid">
+
+    <!-- Brand -->
+    <a class="navbar-brand" href="/listings">
+      <i class="fa-regular fa-compass"></i>
+      <span class="brand-text">StayFinder</span>
+    </a>
+
+    <!-- Toggle -->
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+      data-bs-target="#navbarNavAltMarkup">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+
+      <!-- Left -->
+      <div class="navbar-nav me-auto">
+        <a class="nav-link" href="/listings">Explore</a>
+      </div>
+
+      <!-- Center Search -->
+      <div class="search-container-wrapper">
+        <div class="search-container position-relative">
+          <form class="d-flex align-items-center" method="post" action="/search">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
+              viewBox="0 0 24 24" fill="none" stroke="currentColor"
+              stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+              class="search-icon">
+              <circle cx="11" cy="11" r="8"></circle>
+              <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+            </svg>
+
+            <input class="form-control search-input ps-5"
+              type="search"
+              name="search"
+              placeholder="Search anything..." />
+
+            <button class="btn btn-search ms-2" type="submit">Search</button>
           </form>
         </div>
+      </div>
 
-        <div class="navbar-nav ms-auto">
-          <a class="nav-link" href="/listings/new">Add your home</a>
-          <% if(!currUser) { %>
-            <a class="nav-link active" aria-current="page" href="/signup"><b>Signup</b></a>
-            <a class="nav-link" href="/login"><b>Login</b></a>
-            <% } %>
-            <% if(currUser) { %>
-          <a class="nav-link" href="/logout"><b>Logout</b></a>
-          <% } %>
+      <!-- Right -->
+      <div class="navbar-nav ms-auto align-items-center">
+
+        <!-- Dark Mode -->
+        <div class="nav-item">
+          <button id="theme-toggle" class="btn nav-link d-flex align-items-center">
+            <i class="fas fa-moon"></i>
+            <span class="ms-1 d-none d-md-inline">Dark Mode</span>
+          </button>
         </div>
 
+        <a class="nav-link" href="/listings/new">Add Property</a>
+
+        <% if(!currUser){ %>
+          <a class="nav-link" href="/signup">Sign Up</a>
+          <a class="nav-link" href="/login">Log In</a>
+        <% } %>
+
+        <% if(currUser){ %>
+        <div class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle d-flex align-items-center"
+             href="#" role="button" data-bs-toggle="dropdown">
+            <i class="fa-regular fa-user"></i>
+            <span class="ms-2 d-none d-md-inline"><%= currUser.username %></span>
+          </a>
+
+          <ul class="dropdown-menu dropdown-menu-end shadow">
+
+            <li class="dropdown-header">
+              <div class="fw-bold"><%= currUser.username %></div>
+              <small class="text-muted"><%= currUser.email %></small>
+            </li>
+
+            <li><hr class="dropdown-divider"></li>
+
+            <li class="dropdown-header">Account</li>
+            <li><a class="dropdown-item" href="/profile">View Profile</a></li>
+            <li><a class="dropdown-item" href="/settings">Settings</a></li>
+
+            <li><hr class="dropdown-divider"></li>
+
+            <li class="dropdown-header">Trips</li>
+            <li><a class="dropdown-item" href="/bookings">My Bookings</a></li>
+
+            <li><hr class="dropdown-divider"></li>
+
+            <li class="dropdown-header">Payments</li>
+            <li><a class="dropdown-item" href="/payment-methods">Payment Methods</a></li>
+            <li><a class="dropdown-item" href="/invoices">Invoices</a></li>
+
+            <li><hr class="dropdown-divider"></li>
+
+            <li class="dropdown-header">Saved</li>
+            <li><a class="dropdown-item" href="/wishlist">Wishlist</a></li>
+
+            <li><hr class="dropdown-divider"></li>
+
+            <li><a class="dropdown-item" href="/support">Help & Support</a></li>
+
+            <li><hr class="dropdown-divider"></li>
+
+            <li>
+              <a class="dropdown-item text-danger" href="/logout">Logout</a>
+            </li>
+
+          </ul>
+        </div>
+        <% } %>
 
       </div>
     </div>
-  </nav>
+  </div>
+</nav>

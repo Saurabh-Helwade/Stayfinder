@@ -1,0 +1,55 @@
+<% layout("/layouts/boilerplate") %>
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-10">
+            <div class="card profile-card">
+                <div class="card-header">
+                    <h3 class="mb-0">Payment Methods</h3>
+                </div>
+                <div class="card-body">
+                    <div class="alert alert-info">
+                        <i class="fa-solid fa-circle-info me-2"></i>
+                        As per your preference, this is a simple booking system without payment integration.
+                    </div>
+                    
+                    <div class="text-center py-5">
+                        <i class="fa-regular fa-credit-card fa-3x mb-3 text-muted"></i>
+                        <h4>No Payment Methods Saved</h4>
+                        <p class="text-muted">When payment functionality is added, you'll be able to manage your payment methods here.</p>
+                        <a href="/user/profile" class="btn btn-primary">Back to Profile</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+.profile-card {
+    border: none;
+    border-radius: var(--border-radius-medium);
+    box-shadow: var(--shadow-medium);
+    overflow: hidden;
+}
+
+.profile-card .card-header {
+    background: linear-gradient(135deg, var(--primary-color), #ff7a84);
+    color: white;
+    border: none;
+    padding: 1.5rem;
+}
+
+.btn-primary {
+    background: linear-gradient(135deg, var(--primary-color), #ff7a84);
+    border: none;
+    padding: 0.75rem 1.5rem;
+    border-radius: var(--border-radius-small);
+    font-weight: 600;
+}
+
+.btn-primary:hover {
+    background: linear-gradient(135deg, #e53943, #ff4d4d);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(254, 66, 77, 0.3);
+}
+</style>

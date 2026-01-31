@@ -1,0 +1,127 @@
+<% layout("layouts/boilerplate") -%>
+
+<!-- ================= HERO SECTION ================= -->
+<section class="hero-section">
+  <!-- Background Video -->
+  <video
+    autoplay
+    muted
+    loop
+    playsinline
+    class="hero-video"
+    poster="https://images.unsplash.com/photo-1655183689956-59ef30f95db3?q=80&w=1332&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D">
+    <source
+      src="https://assets.mixkit.co/videos/preview/mixkit-forest-stream-in-the-sunlight-529-large.mp4"
+      type="video/mp4">
+    Your browser does not support the video tag.
+  </video>
+
+  <!-- Overlay -->
+  <div class="hero-overlay"></div>
+
+  <!-- Content -->
+  <div class="hero-content text-center">
+    <h1 class="hero-title" style="color:white">Welcome to StayFinder</h1>
+    <p class="hero-subtitle">Find your perfect vacation rental</p>
+    <a href="/listings" class="btn btn-primary btn-lg mt-3">
+      Explore Listings
+    </a>
+  </div>
+</section>
+
+<!-- ================= STYLES ================= -->
+<style>
+/* ================= BASE HERO ================= */
+
+.hero-section {
+  position: relative;
+  width: 100vw;
+  height: 90vh;
+  overflow: hidden;
+
+  /* full-width breakout */
+  left: 50%;
+  right: 50%;
+  margin-left: -50vw;
+  margin-right: -50vw;
+}
+
+.hero-video {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.hero-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    rgba(0, 0, 0, 0.55),
+    rgba(0, 0, 0, 0.65)
+  );
+  z-index: 1;
+}
+
+.hero-content {
+  position: relative;
+  z-index: 2;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: #ffffff;
+  padding: 1rem;
+}
+
+.hero-title {
+  font-size: clamp(2.2rem, 5vw, 3.5rem);
+  font-weight: 800;
+  margin-bottom: 1rem;
+  text-shadow: 0 6px 20px rgba(0, 0, 0, 0.5);
+}
+
+.hero-subtitle {
+  font-size: clamp(1.1rem, 2.5vw, 1.4rem);
+  max-width: 600px;
+  opacity: 0.95;
+}
+
+/* Button already matches site theme */
+.hero-content .btn-primary {
+  padding: 0.75rem 2rem;
+  font-weight: 600;
+  border-radius: 999px;
+}
+
+/* ================= DARK MODE ================= */
+
+.night-mode .hero-overlay {
+  background: linear-gradient(
+    rgba(2, 6, 23, 0.75),
+    rgba(2, 6, 23, 0.85)
+  );
+}
+
+.night-mode .hero-title {
+  color: #f9fafb;
+}
+
+.night-mode .hero-subtitle {
+  color: #e5e7eb;
+}
+
+/* ================= RESPONSIVE ================= */
+
+@media (max-width: 768px) {
+  .hero-section {
+    height: 80vh;
+  }
+
+  .hero-content {
+    padding: 0 1.25rem;
+  }
+}
+</style>

@@ -1,0 +1,202 @@
+<% layout("/layouts/boilerplate") %>
+
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-12">
+            <div class="card bookings-card">
+                <div class="card-header">
+                    <h3 class="mb-0">Cancelled Trips</h3>
+                </div>
+
+                <div class="card-body">
+                    <ul class="nav nav-tabs mb-4">
+                        <li class="nav-item">
+                            <a class="nav-link" href="/bookings">All Bookings</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/bookings/upcoming">Upcoming</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/bookings/past">Past</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link active" href="/bookings/cancelled">Cancelled</a>
+                        </li>
+                    </ul>
+
+                    <% if (typeof bookings !== 'undefined' && bookings.length > 0) { %>
+                        <div class="row">
+                            <% bookings.forEach(booking => { %>
+                                <div class="col-md-6 col-lg-4 mb-4">
+                                    <div class="booking-card">
+                                        <div class="booking-header">
+                                            <% if (booking.listing) { %>
+                                                <h5><%= booking.listing.title %></h5>
+                                                <p class="text-muted">
+                                                    <span class="custom-house-icon"></span>
+                                                    <%= booking.listing.location %>, <%= booking.listing.country %>
+                                                </p>
+                                            <% } else { %>
+                                                <h5>Listing Unavailable</h5>
+                                                <p class="text-muted">This listing has been removed</p>
+                                            <% } %>
+                                        </div>
+
+                                        <div class="booking-details">
+                                            <div class="booking-info">
+                                                <p><strong>Booking ID:</strong> <%= booking._id %></p>
+                                                <p><strong>Dates:</strong>
+                                                    <%= new Date(booking.startDate).toLocaleDateString() %>
+                                                    to
+                                                    <%= new Date(booking.endDate).toLocaleDateString() %>
+                                                </p>
+                                                <p><strong>Guests:</strong> <%= booking.guests %> guests</p>
+                                                <p><strong>Total:</strong> ₹<%= booking.totalPrice %></p>
+                                                <p>
+                                                    <strong>Status:</strong>
+                                                    <span class="badge bg-danger">Cancelled</span>
+                                                </p>
+                                                <p>
+                                                    <strong>Cancelled On:</strong>
+                                                    <%= new Date(booking.bookingDate).toLocaleDateString() %>
+                                                </p>
+                                            </div>
+                                        </div>
+
+                                        <div class="card-footer bg-white">
+                                            <div class="d-grid gap-2">
+                                                <a href="/invoices" class="btn btn-sm btn-outline-primary">
+                                                    <i class="fa-regular fa-file-lines me-1"></i> View Invoice
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            <% }); %>
+                        </div>
+                    <% } else { %>
+                        <div class="no-bookings text-center py-5">
+                            <i class="fa-solid fa-calendar-days fa-3x mb-3 text-muted"></i>
+                            <h4>No cancelled trips</h4>
+                            <p class="text-muted">Your cancelled bookings will appear here.</p>
+                            <a href="/listings" class="btn btn-primary">Explore Listings</a>
+                        </div>
+                    <% } %>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+/* ================= LIGHT MODE (UNCHANGED) ================= */
+
+.bookings-card {
+    border: none;
+    border-radius: var(--border-radius-medium);
+    box-shadow: var(--shadow-medium);
+    overflow: hidden;
+}
+
+.bookings-card .card-header {
+    background: linear-gradient(135deg, var(--primary-color), #ff7a84);
+    color: white;
+    border: none;
+    padding: 1.5rem;
+}
+
+.nav-tabs .nav-link {
+    color: var(--accent-color);
+    border: none;
+    font-weight: 500;
+}
+
+.nav-tabs .nav-link.active {
+    color: var(--primary-color);
+    border-bottom: 3px solid var(--primary-color);
+    background: transparent;
+}
+
+.nav-tabs .nav-link:hover {
+    background-color: rgba(254, 66, 77, 0.1);
+}
+
+.booking-card {
+    border: 1px solid #e0e0e0;
+    border-radius: var(--border-radius-small);
+    overflow: hidden;
+    transition: all 0.3s ease;
+    height: 100%;
+}
+
+.booking-header {
+    padding: 1rem;
+    background: linear-gradient(135deg, #f8f9fa, #e9ecef);
+    border-bottom: 1px solid #e0e0e0;
+}
+
+.booking-details {
+    padding: 1rem;
+}
+
+.card-footer {
+    border-top: 1px solid #e0e0e0;
+    padding: 1rem;
+}
+
+/* ================= DARK MODE ================= */
+
+.night-mode .bookings-card {
+    background-color: #020617;
+    border: 1px solid #1e293b;
+}
+
+.night-mode .booking-card {
+    background-color: #020617;
+    border-color: #1e293b;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.7);
+}
+
+.night-mode .booking-header {
+    background: linear-gradient(135deg, #020617, #020617);
+    border-bottom-color: #1e293b;
+}
+
+.night-mode .booking-header h5,
+.night-mode .booking-info p,
+.night-mode h4 {
+    color: #f9fafb;
+}
+
+.night-mode .text-muted {
+    color: #94a3b8 !important;
+}
+
+.night-mode .nav-tabs .nav-link {
+    color: #cbd5f5;
+}
+
+.night-mode .nav-tabs .nav-link.active {
+    color: #fe424d;
+    border-bottom-color: #fe424d;
+}
+
+.night-mode .card-footer {
+    background-color: #020617 !important;
+    border-top-color: #1e293b;
+}
+
+.night-mode .btn-outline-primary {
+    color: #fe424d;
+    border-color: #fe424d;
+}
+
+.night-mode .btn-outline-primary:hover {
+    background: linear-gradient(135deg, #fe424d, #ff7a84);
+    color: #ffffff;
+}
+
+.night-mode .no-bookings {
+    color: #e5e7eb;
+}
+</style>

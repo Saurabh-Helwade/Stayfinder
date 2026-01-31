@@ -1,0 +1,247 @@
+<% layout("/layouts/boilerplate") %>
+
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-10">
+            <div class="card profile-card">
+                <div class="card-header">
+                    <h3 class="mb-0">Support Center</h3>
+                </div>
+
+                <div class="card-body">
+                    <div class="row">
+
+                        <!-- ================= LEFT SIDEBAR ================= -->
+                        <div class="col-md-4 mb-4 mb-md-0">
+                            <div class="list-group">
+                                <a href="#" class="list-group-item list-group-item-action active">
+                                    <i class="fa-regular fa-circle-question me-2"></i> Help Center
+                                </a>
+                                
+                                <a href="mailto:helwadesaurabh@gmail.com"
+                                    class="list-group-item list-group-item-action">
+                                    <i class="fa-regular fa-envelope me-2"></i>
+                                    Contact Us
+                                    <div class="small text-muted ms-4">
+                                        helwadesaurabh@gmail.com
+                                    </div>
+                                </a>
+                                <a href="https://wa.me/918600436731"
+                                target="_blank"
+                                class="list-group-item list-group-item-action">
+                                <i class="fa-brands fa-whatsapp me-2 text-success"></i>
+                                Live Chat (WhatsApp)
+                                <div class="small text-muted ms-4">
+                                    +91 86004 36731
+                                </div>
+                                </a>
+                                <a href="tel:+918600436731"
+                                    class="list-group-item list-group-item-action">
+                                    <i class="fa-solid fa-phone me-2"></i>
+                                    Call Support
+                                    <div class="small text-muted ms-4">
+                                        +91 86004 36731
+                                    </div>
+                                    </a>
+                            </div>
+
+                            <div class="card mt-4">
+                                <div class="card-body">
+                                    <h5>Emergency Support</h5>
+                                    <p class="mb-2">For urgent issues during your stay:</p>
+                                    <p class="mb-1">
+                                        <i class="fa-solid fa-phone me-2"></i> +917855223366
+                                    </p>
+                                    <p class="mb-0">
+                                        <i class="fa-regular fa-envelope me-2"></i> support@stayfinder.com
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- ================= MAIN CONTENT ================= -->
+                        <div class="col-md-8">
+                            <h4 class="mb-4">How can we help you today?</h4>
+
+                            <form method="POST" action="/user/support">
+                                <div class="mb-3">
+                                    <label class="form-label">Subject</label>
+                                    <select class="form-select">
+                                        <option>Select a topic</option>
+                                        <option>Booking Issue</option>
+                                        <option>Payment Problem</option>
+                                        <option>Account Access</option>
+                                        <option>Listing Inquiry</option>
+                                        <option>Technical Support</option>
+                                        <option>Other</option>
+                                    </select>
+                                </div>
+
+                                <div class="mb-3">
+                                    <label class="form-label">Message</label>
+                                    <textarea class="form-control" rows="5"
+                                        placeholder="Describe your issue in detail..."></textarea>
+                                </div>
+
+                                <div class="mb-3">
+                                    <label class="form-label">Attachment (Optional)</label>
+                                    <input type="file" class="form-control">
+                                </div>
+
+                                <div class="d-grid">
+                                    <button class="btn btn-primary">Submit Request</button>
+                                </div>
+                            </form>
+
+                            <!-- ================= FAQ ================= -->
+                            <div class="mt-5">
+                                <h5>Frequently Asked Questions</h5>
+
+                                <div class="accordion" id="faqAccordion">
+
+                                    <div class="accordion-item">
+                                        <h2 class="accordion-header">
+                                            <button class="accordion-button"
+                                                data-bs-toggle="collapse"
+                                                data-bs-target="#faq1">
+                                                How do I cancel a booking?
+                                            </button>
+                                        </h2>
+                                        <div id="faq1" class="accordion-collapse collapse show">
+                                            <div class="accordion-body">
+                                                You can cancel a booking from "My Bookings".
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="accordion-item">
+                                        <h2 class="accordion-header">
+                                            <button class="accordion-button collapsed"
+                                                data-bs-toggle="collapse"
+                                                data-bs-target="#faq2">
+                                                How do I change my account information?
+                                            </button>
+                                        </h2>
+                                        <div id="faq2" class="accordion-collapse collapse">
+                                            <div class="accordion-body">
+                                                Go to "My Profile" → Edit Profile.
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="accordion-item">
+                                        <h2 class="accordion-header">
+                                            <button class="accordion-button collapsed"
+                                                data-bs-toggle="collapse"
+                                                data-bs-target="#faq3">
+                                                What payment methods do you accept?
+                                            </button>
+                                        </h2>
+                                        <div id="faq3" class="accordion-collapse collapse">
+                                            <div class="accordion-body">
+                                                This project currently uses a demo booking system.
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+/* ================= LIGHT MODE (EXISTING) ================= */
+
+.profile-card {
+    border: none;
+    border-radius: var(--border-radius-medium);
+    box-shadow: var(--shadow-medium);
+    overflow: hidden;
+}
+
+.profile-card .card-header {
+    background: linear-gradient(135deg, var(--primary-color), #ff7a84);
+    color: white;
+    padding: 1.5rem;
+}
+
+.list-group-item.active {
+    background: linear-gradient(135deg, var(--primary-color), #ff7a84);
+    border-color: var(--primary-color);
+}
+
+.form-label {
+    font-weight: 600;
+    color: var(--secondary-color);
+}
+
+.accordion-button {
+    font-weight: 600;
+}
+
+/* ================= DARK MODE ================= */
+
+.night-mode .profile-card {
+    background-color: #020617;
+    border: 1px solid #1e293b;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.8);
+}
+
+.night-mode .card-body,
+.night-mode h4,
+.night-mode h5,
+.night-mode p {
+    color: #e5e7eb;
+}
+
+.night-mode .list-group-item {
+    background-color: #020617;
+    border-color: #1e293b;
+    color: #e5e7eb;
+}
+
+.night-mode .list-group-item:hover {
+    background-color: rgba(254, 66, 77, 0.15);
+}
+
+.night-mode .list-group-item.active {
+    background: linear-gradient(135deg, var(--primary-color), #ff7a84);
+    color: white;
+}
+
+.night-mode .form-control,
+.night-mode .form-select {
+    background-color: #020617;
+    border: 1px solid #1e293b;
+    color: #f9fafb;
+}
+
+.night-mode .form-control::placeholder {
+    color: #94a3b8;
+}
+
+.night-mode .accordion-item {
+    background-color: #020617;
+    border: 1px solid #1e293b;
+}
+
+.night-mode .accordion-button {
+    background-color: #020617;
+    color: #f9fafb;
+}
+
+.night-mode .accordion-button:not(.collapsed) {
+    background: rgba(254, 66, 77, 0.15);
+    color: #ffffff;
+}
+
+.night-mode .accordion-body {
+    color: #e5e7eb;
+}
+</style>

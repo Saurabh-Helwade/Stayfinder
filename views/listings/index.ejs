@@ -1,160 +1,887 @@
-<% layout("/layouts/boilerplate") %>
-<body>
-    <%= success %>
+<% layout("/layouts/boilerplate") -%>
+<!-- Hero/Banner Section -->
+<section class="hero-section">
+  <div class="hero-content">
+    <div class="hero-text">
+      <h1 class="hero-title" style=" color: white">Find Your Perfect Stay</h1>
+      <p class="hero-subtitle">Discover amazing places to stay around the world</p>
+    </div>
+
+    <div class="hero-search-box">
+      <form class="search-form" method="POST" action="/listings/search">
+        <div class="search-row">
+
+          <div class="search-item">
+            <label for="location">Location</label>
+            <input type="text" id="location" name="search" class="form-control"
+              placeholder="Where are you going?" required>
+          </div>
+
+          <div class="search-item">
+            <label for="checkin">Check-in</label>
+            <input type="date" id="checkin" class="form-control">
+          </div>
+
+          <div class="search-item">
+            <label for="checkout">Check-out</label>
+            <input type="date" id="checkout" class="form-control">
+          </div>
+
+          <div class="search-item">
+            <label for="guests">Guests</label>
+            <select id="guests" class="form-control">
+              <option value="1">1 Guest</option>
+              <option value="2" selected>2 Guests</option>
+              <option value="3">3 Guests</option>
+              <option value="4">4 Guests</option>
+              <option value="5">5+ Guests</option>
+            </select>
+          </div>
+
+          <div class="search-item search-btn-item">
+            <button type="submit" class="btn btn-search-primary">Search</button>
+          </div>
+
+        </div>
+      </form>
+    </div>
+  </div>
+</section>
 
 <style>
-    #filters {
-        display: flex;
-        flex-wrap: wrap;
-        align-items: center;
-    }
+  /* Hero Section Styles */
+  .hero-section {
+    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), 
+                url('https://images.unsplash.com/photo-1566073771259-6a8506099945?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1200&q=80');
+    background-size: cover;
+    background-position: center;
+    height: 60vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: white;
+    position: relative;
+    margin-bottom: 2rem;
+    width: 100vw;
+    position: relative;
+    left: 50%;
+    right: 50%;
+    margin-left: -50vw;
+    margin-right: -50vw;
+    z-index: 0;
+  }
 
-    .filter {
-        text-align: center;
-        margin-right: 2rem;
-        margin-top: 2rem;
-        opacity: 0.7;
-    }
+  .hero-content {
+    max-width: 1000px;
+    padding: 2rem;
+    width: 100%;
+    position: relative;
+    z-index: 1;
+  }
 
-    .filter:hover {
-        opacity: 1;
-         cursor: pointer;
-    }
+  .hero-title {
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+  }
 
-    .filter p {
-        font-size: 0.8rem;
+  .hero-subtitle {
+    font-size: 1.2rem;
+    margin-bottom: 2rem;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
+  }
 
-    }
+  /* Hero Search Box */
+  .hero-search-box {
+    background: white;
+    border-radius: 16px;
+    padding: 1.5rem;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    color: #333;
+    max-width: 900px;
+    margin: 0 auto;
+  }
 
-    .tax-info {
-        display: none;
-    }
+  .search-form .search-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    align-items: end;
+  }
 
-    .tax-toggle {
-        border: 1px solid black;
-        height: 2.5rem;
-        border-radius: 1rem;
-        padding: 1rem;
-        margin-left: 2.5rem;
-        display: flex;
-        align-items: center;
-        border-color: rgb(60, 60, 60);
+  .search-item {
+    flex: 1;
+    min-width: 150px;
+  }
+
+  .search-item label {
+    display: block;
+    text-align: left;
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+    color: #555;
+  }
+
+  .search-item .form-control {
+    width: 100%;
+    padding: 0.75rem;
+    border: 1px solid #ddd;
+    border-radius: 12px;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+  }
+
+  .search-item .form-control:focus {
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 3px rgba(254, 66, 77, 0.2);
+    outline: none;
+  }
+
+  .search-btn-item {
+    display: flex;
+    align-items: end;
+  }
+
+  .btn-search-primary {
+    background: linear-gradient(135deg, var(--primary-color), #ff7a84);
+    color: white;
+    border: 1px solid #ddd;
+    border-radius: 12px;
+    padding: 0.75rem 1.5rem;
+    font-weight: 600;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    width: 100%;
+  }
+
+  .btn-search-primary:hover {
+    background: linear-gradient(135deg, #e53943, #ff4d4d);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(254, 66, 77, 0.3);
+  }
+
+  /* Responsive Styles */
+  @media (max-width: 768px) {
+    .hero-title {
+      font-size: 2rem;
     }
+    
+    .hero-subtitle {
+      font-size: 1rem;
+    }
+    
+    .hero-section {
+      height: 50vh;
+    }
+    
+    .search-item {
+      min-width: 100%;
+    }
+    
+    .hero-search-box {
+      padding: 1rem;
+    }
+  }
+
+
+  /* ===================== DARK MODE – FILTERS ===================== */
+
+.night-mode .filters-container {
+  background: linear-gradient(145deg, #020617, #020617);
+  border-color: #1e293b;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.8);
+}
+
+/* Filter item base */
+.night-mode .filter-item {
+  background-color: #020617;
+  border-color: #1e293b;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.6);
+  transition: all 0.3s ease;
+}
+
+/* Text & icon default = white */
+.night-mode .filter-item p,
+.night-mode .filter-item i {
+  color: #f9fafb !important;
+}
+
+/* Hover effect → RED */
+.night-mode .filter-item:hover {
+  border-color: var(--primary-color);
+  background-color: rgba(254, 66, 77, 0.12);
+  transform: translateY(-3px);
+}
+
+.night-mode .filter-item:hover p,
+.night-mode .filter-item:hover i {
+  color: var(--primary-color) !important;
+}
+
+/* Active state */
+.night-mode .filter-item.active {
+  border-color: var(--primary-color);
+  background-color: rgba(254, 66, 77, 0.18);
+}
+
+.night-mode .filter-item.active p,
+.night-mode .filter-item.active i {
+  color: var(--primary-color) !important;
+}
+
+/* Tax toggle container */
+.night-mode .tax-toggle-container {
+  background-color: #020617;
+  border-color: #1e293b;
+}
+
+.night-mode .tax-toggle-label {
+  color: #f9fafb;
+}
+
 </style>
 
+<style>
+  /* As per user preference for horizontal scrolling carousel with snap alignment */
+/* FIXED horizontal scrolling filters */
+.filters-container {
+  display: flex;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
 
-    <div id="filters">
-        <div class="filter">
-            <div>
-                <i class="fa-solid fa-fire"></i>
-            </div>
-            <p>Trending</p>
-        </div>
-        <div class="filter">
-            <div>
-                <i class="fa-solid fa-bed"></i>
-            </div>
-            <p>Rooms</p>
-        </div>
-        <div class="filter">
-            <div>
-                <i class="fa-solid fa-mountain-city"></i>
-            </div>
-            <p>Iconic Cities</p>
-        </div>
-        <div class="filter">
-            <div>
-                <i class="fa-solid fa-mountain"></i>
-            </div>
-            <p>Mountains</p>
-        </div>
-        <div class="filter">
-            <div>
-                <i class="fa-brands fa-fort-awesome"></i>
-            </div>
-            <p>Castels</p>
-        </div>
-        <div class="filter">
-            <div>
-                <i class="fa-solid fa-person-swimming"></i>
-            </div>
-            <p>Actic Pools</p>
-        </div>
-        <div class="filter">
-            <div>
-                <i class="fa-solid fa-campground"></i>
-            </div>
-            <p>Camping</p>
-        </div>
-        <div class="filter">
-            <div>
-                <i class="fa-solid fa-tractor"></i>
-            </div>
-            <p>Farms</p>
-        </div>
-        <div class="filter">
-            <div>
-                <i class="fa-regular fa-snowflake"></i>
-            </div>
-            <p>Arctic </p>
-        </div>
-        <div class="filter">
-            <div>
-                <i class="fa-solid fa-igloo"></i>
-            </div>
-            <p>Domes</p>
-        </div>
-        <div class="filter">
-            <div>
-                <i class="fa-solid fa-ship"></i>
-            </div>
-            <p>Boats </p>
-        </div>
+  gap: 12px;
 
-        <div class="tax-toggle">
-            <div class="form-check-reverse form-switch">
-                <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault">
-                <label class="form-check-label" for="flexSwitchCheckDefault">Display total after taxes</label>
+  /* 🔥 KEY FIXES */
+  padding: 0.75rem 0.75rem;          /* equal left-right padding */
+  scroll-padding-left: 0.75rem;      /* prevents left clipping */
+  justify-content: flex-start;       /* NEVER center scroll content */
+
+  border: 2px solid #e0e0e0;
+  border-radius: 12px;
+  background: linear-gradient(145deg, #ffffff, #f8f8f8);
+  box-shadow: var(--shadow-medium);
+
+  margin: 0 auto 1rem auto;
+  width: 100%;                       /* 🔥 remove centering math */
+
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.filters-container::-webkit-scrollbar {
+  display: none;
+}
+
+
+  /* As per user preference for filter item borders */
+  .filter-item {
+    scroll-snap-align: center;
+    flex: 0 0 auto; /* Don't grow, maintain fixed size */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 0.6rem 0.8rem; /* Increased padding for more space */
+    border: 2px solid #e0e0e0; /* As per user preference for visible borders */
+    border-radius: 16px; /* Larger border radius for aesthetics */
+    background: white;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    min-width: 75px; /* Increased min-width */
+    text-align: center;
+    max-width: 100px; /* Increased max-width */
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05); /* Subtle shadow for depth */
+  }
+
+  .filter-item:hover {
+    border-color: var(--primary-color);
+    transform: translateY(-3px); /* Enhanced hover effect */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* Enhanced shadow on hover */
+  }
+
+  .filter-item.active {
+    border-color: var(--primary-color);
+    background-color: rgba(254, 66, 77, 0.1);
+  }
+
+  /* Touch active state for mobile devices */
+  .filter-item.touch-active {
+    border-color: var(--primary-color);
+    transform: translateY(-3px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    background-color: rgba(254, 66, 77, 0.1);
+  }
+
+  /* As per user preference for removing opacity from filter icons */
+  .filter-item i {
+    font-size: 1.1rem; /* Larger icon size */
+    margin-bottom: 0.3rem; /* Balanced margin */
+    color: var(--secondary-color);
+  }
+
+  .filter-item:hover i,
+  .filter-item.active i {
+    color: var(--primary-color);
+  }
+
+  .filter-item p {
+    margin: 0;
+    font-size: 0.8rem; /* Larger text size */
+    font-weight: 500;
+    color: var(--accent-color);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 100%;
+  }
+
+  .filter-item:hover p,
+  .filter-item.active p {
+    color: var(--primary-color);
+  }
+
+  /* As per user preference for compact filter layout */
+  .tax-toggle-container {
+    display: flex;
+    align-items: center;
+    padding: 0.6rem 0.8rem; /* Increased padding */
+    border: 2px solid #e0e0e0;
+    border-radius: 16px; /* Larger border radius */
+    background: white;
+    flex: 0 0 auto;
+    scroll-snap-align: center;
+    min-width: fit-content;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05); /* Subtle shadow for depth */
+  }
+
+  .tax-toggle-label {
+    font-size: 0.8rem; /* Larger text size */
+    font-weight: 500;
+    color: var(--accent-color);
+    margin-left: 0.5rem; /* Balanced margin */
+    white-space: nowrap;
+  }
+
+  /* As per user preference for left-aligned listings header */
+  .listings-header {
+    text-align: center; /* Changed to center alignment */
+    font-size: 1.8rem;
+    font-weight: 700;
+    margin: 1rem 0; /* Reduced margin */
+    padding: 0 0.5rem;
+    color: var(--secondary-color);
+  }
+
+  /* As per user preference for full-width explore section */
+  .container-fluid {
+    max-width: 100%;
+    padding: 0 1rem;
+  }
+
+  .container-fluid .row {
+    margin: 0 -0.5rem;
+  }
+
+  .container-fluid .col {
+    padding: 0 0.5rem;
+  }
+
+  /* As per user preference for larger listing cards */
+  .listing-card {
+    border: none !important;
+    margin-bottom: 2rem !important;
+    border-radius: var(--border-radius-medium) !important;
+    overflow: hidden;
+    box-shadow: var(--shadow-medium);
+    transition: all 0.3s ease;
+    height: 100%;
+    background: white;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+  }
+
+  /* As per user preference for hover zoom effect */
+  .listing-card:hover {
+    transform: scale(1.02);
+    box-shadow: var(--shadow-large);
+  }
+
+  .card-img-top {
+    border-radius: var(--border-radius-medium) var(--border-radius-medium) 0 0 !important;
+    width: 100% !important;
+    object-fit: cover !important;
+    height: 16rem; /* As per user preference for larger listing cards */
+  }
+
+  .card-body {
+    padding: 1.5rem !important; /* As per user preference for increased card body padding */
+  }
+
+  .card-text-title {
+    font-weight: 700 !important;
+    font-size: 1.1rem;
+    margin-bottom: 0.5rem;
+    color: var(--secondary-color);
+  }
+
+  .card-text {
+    font-size: 0.95rem;
+    color: var(--accent-color);
+    margin-bottom: 0.25rem;
+  }
+
+  .card-link {
+    text-decoration: none;
+    color: inherit;
+  }
+
+  .tax-info {
+    font-size: 0.8rem;
+    color: var(--accent-color);
+  }
+
+  /* Mobile First Approach - Base styles for mobile devices */
+  .filters-container {
+    width: 100%;
+    padding: 0.25rem;
+    gap: 8px;
+    border-radius: 8px;
+  }
+
+  .filter-item {
+    padding: 0.5rem;
+    min-width: 60px;
+    max-width: 80px;
+  }
+
+  .filter-item i {
+    font-size: 0.9rem;
+  }
+
+  .filter-item p {
+    font-size: 0.75rem;
+  }
+
+  .tax-toggle-container {
+    padding: 0.5rem;
+  }
+
+  .tax-toggle-label {
+    font-size: 0.75rem;
+  }
+
+  .listings-header {
+    font-size: 1.5rem;
+    margin: 0.75rem 0;
+  }
+
+  .card-img-top {
+    height: 12rem;
+  }
+
+  .card-body {
+    padding: 1rem !important;
+  }
+
+  .card-text-title {
+    font-size: 1rem;
+  }
+
+  .card-text {
+    font-size: 0.9rem;
+  }
+
+  .tax-info {
+    font-size: 0.75rem;
+  }
+
+  /* Small phones (under 480px) */
+  @media (max-width: 480px) {
+    .filters-container {
+      gap: 6px;
+      padding: 0.25rem 0.1rem;
+    }
+    
+    .filter-item {
+      padding: 0.4rem;
+      min-width: 50px;
+      max-width: 70px;
+    }
+    
+    .filter-item i {
+      font-size: 0.8rem;
+      margin-bottom: 0.2rem;
+    }
+    
+    .filter-item p {
+      font-size: 0.7rem;
+    }
+    
+    .tax-toggle-container {
+      padding: 0.4rem;
+    }
+    
+    .tax-toggle-label {
+      font-size: 0.7rem;
+    }
+    
+    .listings-header {
+      font-size: 1.3rem;
+      margin: 0.5rem 0;
+    }
+    
+    .card-img-top {
+      height: 10rem;
+    }
+    
+    .card-body {
+      padding: 0.75rem !important;
+    }
+    
+    .card-text-title {
+      font-size: 0.95rem;
+    }
+    
+    .card-text {
+      font-size: 0.85rem;
+    }
+  }
+
+  /* iPhone SE and similar small devices */
+  @media (max-width: 375px) {
+    .filter-item {
+      padding: 0.3rem;
+      min-width: 45px;
+      max-width: 65px;
+    }
+    
+    .filter-item p {
+      font-size: 0.65rem;
+    }
+    
+    .card-img-top {
+      height: 9rem;
+    }
+    
+    .card-text-title {
+      font-size: 0.9rem;
+    }
+  }
+
+  /* Landscape orientation for phones */
+  @media (max-width: 767px) and (orientation: landscape) {
+    .card-img-top {
+      height: 10rem;
+    }
+    
+    .listing-card {
+      margin-bottom: 1rem !important;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .filters-container {
+      padding: 0.75rem 0.25rem;
+      justify-content: flex-start; /* On mobile, align items to start */
+      width: 95%;
+    }
+    
+    .filter-item {
+      padding: 0.4rem 0.6rem; /* Further reduced padding for mobile */
+      min-width: 60px; /* Further reduced min-width for mobile */
+      flex: 0 0 auto; /* On mobile, don't grow items */
+    }
+    
+    .filter-item p {
+      font-size: 0.7rem; /* Further reduced font size for mobile */
+    }
+    
+    .tax-toggle-container {
+      padding: 0.4rem 0.6rem; /* Further reduced padding for mobile */
+    }
+    
+    .tax-toggle-label {
+      font-size: 0.7rem; /* Further reduced font size for mobile */
+    }
+  }
+
+  /* Medium devices (tablets, 768px and up) */
+  @media (min-width: 768px) {
+    .filters-container {
+      width: 95%;
+      padding: 0.5rem 0.25rem;
+      gap: 12px;
+      border-radius: 12px;
+    }
+    
+    .filter-item {
+      padding: 0.6rem 0.8rem;
+      min-width: 75px;
+      max-width: 100px;
+    }
+    
+    .filter-item i {
+      font-size: 1.1rem;
+      margin-bottom: 0.3rem;
+    }
+    
+    .filter-item p {
+      font-size: 0.8rem;
+    }
+    
+    .tax-toggle-container {
+      padding: 0.6rem 0.8rem;
+    }
+    
+    .tax-toggle-label {
+      font-size: 0.8rem;
+    }
+    
+    .listings-header {
+      font-size: 1.8rem;
+      margin: 1rem 0;
+    }
+    
+    .card-img-top {
+      height: 16rem;
+    }
+    
+    .card-body {
+      padding: 1.5rem !important;
+    }
+    
+    .card-text-title {
+      font-size: 1.1rem;
+    }
+    
+    .card-text {
+      font-size: 0.95rem;
+    }
+  }
+
+  /* Large devices (desktops, 992px and up) */
+  @media (min-width: 992px) {
+    .filters-container {
+      width: 85%;
+    }
+  }
+
+  /* Extra large devices (large desktops, 1200px and up) */
+  @media (min-width: 1200px) {
+    .filters-container {
+      width: 80%;
+    }
+  }
+</style>
+
+<body>
+  <h1 class="listings-header">Discover Your Perfect Getaway</h1>
+
+  <!-- Horizontal scrolling filters -->
+  <div class="filters-container">
+    <div class="filter-item <%= typeof category === 'undefined' || category === 'trending' ? 'active' : '' %>">
+      <i class="fa-solid fa-fire"></i><p>Trending</p>
+    </div>
+    <div class="filter-item <%= category === 'rooms' ? 'active' : '' %>">
+      <i class="fa-solid fa-door-open"></i><p>Rooms</p>
+    </div>
+    <div class="filter-item <%= category === 'iconic cities' ? 'active' : '' %>">
+      <i class="fa-solid fa-city"></i><p>Iconic Cities</p>
+    </div>
+    <div class="filter-item <%= category === 'mountains' ? 'active' : '' %>">
+      <i class="fa-solid fa-mountain"></i><p>Mountains</p>
+    </div>
+    <div class="filter-item <%= category === 'farms' ? 'active' : '' %>">
+      <i class="fa-solid fa-tractor"></i><p>Farms</p>
+    </div>
+    <div class="filter-item <%= category === 'domes' ? 'active' : '' %>">
+      <i class="fa-solid fa-igloo"></i><p>Domes</p>
+    </div>
+    <div class="filter-item <%= category === 'boats' ? 'active' : '' %>">
+      <i class="fa-solid fa-ship"></i><p>Boats</p>
+    </div>
+
+    <!-- Additional categories as requested --> <div class="filter-item <%= category === 'beach' ? 'active' : '' %>"> <i class="fa-solid fa-umbrella-beach"></i> <p>Beach</p> </div> <div class="filter-item <%= category === 'luxury' ? 'active' : '' %>"> <i class="fa-solid fa-crown"></i> <p>Luxury</p> </div> <div class="filter-item <%= category === 'camping' ? 'active' : '' %>"> <i class="fa-solid fa-campground"></i> <p>Camping</p> </div> 
+    <div class="tax-toggle-container">
+      <div class="form-check form-switch">
+        <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault">
+        <label class="tax-toggle-label" for="flexSwitchCheckDefault">
+          Display total before taxes
+        </label>
+      </div>
+    </div>
+  </div>
+
+  <!-- Listings grid -->
+  <div class="container-fluid">
+    <div class="row row-cols-lg-4 row-cols-md-2 row-cols-sm-1 g-4">
+      <% for(let listing of allListings){ %>
+        <div class="col">
+          <a href="/listings/<%= listing._id %>" class="card-link">
+            <div class="card listing-card">
+              <img class="card-img-top" src="<%= listing.image.url %>" alt="<%= listing.title %>">
+              <div class="card-body">
+                <p class="card-text-title"><%= listing.title %></p>
+                <p class="card-text"><%= listing.location %>, <%= listing.country %></p>
+                <p class="card-text">
+                  <i class="fa fa-rupee-sign"></i>
+                  <%= listing.price.toLocaleString("en-IN") %> night
+                  <i class="tax-info"> +18% GST</i>
+                </p>
               </div>
+            </div>
+          </a>
         </div>
+      <% } %>
     </div>
-    <div class="row row-cols-lg-3 row-cols-md-2 row-cols-sm-1">
-        <% for(let listing of allListings) { %>
-            <a href="/listings/<%= listing._id %>" class="listing-link">
-                <div class="listing-card card col">
-                    <img src="<%= listing.image.url %>" 
-                    class="card-img-top" 
-                    alt="listing_images" 
-                    style="height: 20rem; width: 20rem;"
-                    >
-                    <div class="card-img-overlay">
-                        
-                    </div>
-                    <div class="card-body">
-                        <p class="card-text">
-                            <b> <%= listing.title %> </b><br>
-                            &#8377;<%= listing.price.toLocaleString("en-IN") %> / Night
-                            <i class="tax-info"> &nbsp; +18% GST</i>
-                        </p>
-                    </div>
-                </div>
-            </a>
-
-        <% } %>
-    </div>
+  </div>
 </body>
 
 <script>
-    let taxSwitch = document.getElementById("flexSwitchCheckDefault");
-    taxSwitch.addEventListener("click" , () => {
-        let taxInfo = document.getElementsByClassName("tax-info");
-        for(info of taxInfo) {
-            if(info.style.display != "inline") {
-                info.style.display = "inline";
-            } else {
-                info.style.display = "none";
-            }
-            
+  let getswitch = document.getElementById("flexSwitchCheckDefault");
+  
+  if (getswitch) {
+    getswitch.addEventListener("click", () => {
+      let elements = document.getElementsByClassName("tax-info");
+      
+      for (let info of elements) {
+        if (info.style.display !== "inline") {
+          info.style.display = "inline";
+        } else {
+          info.style.display = "none";
         }
+      }
     });
+  }
+  
+  // Add horizontal scrolling with mouse wheel
+  const filtersContainer = document.querySelector('.filters-container');
+  if (filtersContainer) {
+    filtersContainer.addEventListener('wheel', (event) => {
+      event.preventDefault();
+      filtersContainer.scrollLeft += event.deltaY;
+    });
+    
+    // Add touch support for mobile devices
+    let isDown = false;
+    let startX;
+    let scrollLeft;
+    
+    filtersContainer.addEventListener('mousedown', (e) => {
+      isDown = true;
+      startX = e.pageX - filtersContainer.offsetLeft;
+      scrollLeft = filtersContainer.scrollLeft;
+    });
+    
+    filtersContainer.addEventListener('mouseleave', () => {
+      isDown = false;
+    });
+    
+    filtersContainer.addEventListener('mouseup', () => {
+      isDown = false;
+    });
+    
+    filtersContainer.addEventListener('mousemove', (e) => {
+      if (!isDown) return;
+      e.preventDefault();
+      const x = e.pageX - filtersContainer.offsetLeft;
+      const walk = (x - startX) * 2;
+      filtersContainer.scrollLeft = scrollLeft - walk;
+    });
+    
+    // Add touch events for mobile devices
+    filtersContainer.addEventListener('touchstart', (e) => {
+      isDown = true;
+      startX = e.touches[0].pageX - filtersContainer.offsetLeft;
+      scrollLeft = filtersContainer.scrollLeft;
+    });
+    
+    filtersContainer.addEventListener('touchend', () => {
+      isDown = false;
+    });
+    
+    filtersContainer.addEventListener('touchmove', (e) => {
+      if (!isDown) return;
+      e.preventDefault();
+      const x = e.touches[0].pageX - filtersContainer.offsetLeft;
+      const walk = (x - startX) * 2;
+      filtersContainer.scrollLeft = scrollLeft - walk;
+    });
+  }
+  
+  // Add active state to filter items and implement filtering functionality
+  const filterItems = document.querySelectorAll('.filter-item:not(.tax-toggle-container)');
+  filterItems.forEach(item => {
+    item.addEventListener('click', function() {
+      // Remove active class from all items
+      filterItems.forEach(i => i.classList.remove('active'));
+      // Add active class to clicked item
+      this.classList.add('active');
+      
+      // Get the category name from the paragraph text
+      const category = this.querySelector('p').textContent.toLowerCase();
+      
+      // Filter listings based on category
+      filterListingsByCategory(category);
+    });
+    
+    // Add touch support for mobile devices
+    item.addEventListener('touchstart', function() {
+      this.classList.add('touch-active');
+    });
+    
+    item.addEventListener('touchend', function() {
+      this.classList.remove('touch-active');
+    });
+  });
+  
+  // Category filtering function that makes an API call
+  function filterListingsByCategory(category) {
+    // Construct the URL with the category parameter
+    const url = new URL(window.location);
+    url.searchParams.set('category', category);
+    
+    // For a full implementation, we would make an AJAX request to fetch filtered listings
+    // For now, we'll redirect to the page with the category parameter
+    window.location.href = url.toString();
+  }
+  
+  // Set minimum date for check-in and check-out to today
+  const today = new Date().toISOString().split('T')[0];
+  const checkinInput = document.getElementById('checkin');
+  const checkoutInput = document.getElementById('checkout');
+  
+  if (checkinInput) {
+    checkinInput.min = today;
+    checkinInput.value = today;
+  }
+  
+  if (checkoutInput) {
+    const tomorrow = new Date();
+    tomorrow.setDate(tomorrow.getDate() + 1);
+    checkoutInput.min = tomorrow.toISOString().split('T')[0];
+    checkoutInput.value = tomorrow.toISOString().split('T')[0];
+  }
+  
+  // Add double tap to top functionality for mobile devices
+  let lastTap = 0;
+  const tapThreshold = 300; // ms
+  
+  document.addEventListener('touchend', function(event) {
+    const currentTime = new Date().getTime();
+    const tapLength = currentTime - lastTap;
+    
+    if (tapLength < tapThreshold && tapLength > 0) {
+      // Double tap detected, scroll to top
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+      });
+      event.preventDefault();
+    }
+    
+    lastTap = currentTime;
+  });
 </script>
