@@ -1,2 +1,4 @@
 .env
 node_modules/
+public/videos/*.mov
+public/videos/*.mp4
