@@ -6,7 +6,7 @@ StayFinder is a full-stack vacation rental web platform that connects property o
 
 ## 🌐 Live Project Link
 
-👉 To view the live project, [click here](https://stayfinder-yx11.onrender.com/listings)
+👉 To view the live project, [click here](https://stayfinder-yx11.onrender.com)
 
 ---
 
