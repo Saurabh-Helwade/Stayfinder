@@ -73,9 +73,10 @@ StayFinder is a full-stack vacation rental web platform that connects property o
 
 ## Preview
 
-![Preview](https://github.com/Saurabh-Helwade/Stayfinder/blob/2910004ebadb946dcbfab83322d9ffc33cab6cda/Screenshots/Screenshot%202024-07-30%20230831.png)
-![Preview](https://github.com/Saurabh-Helwade/Stayfinder/blob/2910004ebadb946dcbfab83322d9ffc33cab6cda/Screenshots/Screenshot%202024-07-30%20230901.png)
-
+![Preview](https://github.com/Saurabh-Helwade/Stayfinder/blob/d4fc74aaba8a0d94f828173cb98223c6f0aa3fe6/Screenshots/Screenshot%202026-02-01%20003210.png)
+![Preview](https://github.com/Saurabh-Helwade/Stayfinder/blob/d4fc74aaba8a0d94f828173cb98223c6f0aa3fe6/Screenshots/Screenshot%202026-02-01%20003259.png)
+![Preview](https://github.com/Saurabh-Helwade/Stayfinder/blob/d4fc74aaba8a0d94f828173cb98223c6f0aa3fe6/Screenshots/Screenshot%202026-02-01%20003445.png)
+![Preview](https://github.com/Saurabh-Helwade/Stayfinder/blob/d4fc74aaba8a0d94f828173cb98223c6f0aa3fe6/Screenshots/Screenshot%202026-02-01%20003930.png)
 ## Installation
 
 1. **Clone the repository:**
